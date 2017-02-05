@@ -1,0 +1,14 @@
+{
+    "name": "raysoft/rollingcurl",
+    "description": "rolling curl",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jesonray",
+            "email": "jesonray@163.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

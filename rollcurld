@@ -1,0 +1,56 @@
+#!/bin/bash
+#chkconfig:35 19 81
+#processname:rollcurd
+#description:daemon
+
+PID_FILE=/tmp/rollcurld.pid
+OUT_FILE=/tmp/rollcurld.out
+PHP_FILE=/data/wwwroot/composer/raysoft/rollingcurl/deamon.php
+
+start(){
+        if [ -e $PID_FILE ];then
+                echo "Rollcurld is running!"
+        else
+                nohup php $PHP_FILE > $OUT_FILE 2>&1 &
+                echo "Start up... done"
+                echo $! > $PID_FILE
+        fi
+}
+stop(){
+        if [ -e $PID_FILE ];then
+                kill -9 `cat $PID_FILE`
+                echo "Shut down... done"
+                rm -rf $PID_FILE
+        else
+                echo "Rollcurld is already stopped!"
+        fi
+}
+status(){
+        if [ -e $PID_FILE ];then
+                echo "Rollcurld is running!"
+        else
+                echo "Rollcurld is stopped!"
+        fi
+}
+restart(){
+        stop
+        start
+}
+
+case "$1" in
+"start")
+        start
+        ;;
+"stop")
+        stop
+        ;;
+"status")
+        status
+        ;;
+"restart")
+        restart
+        ;;
+*)
+        echo "Useage: service rollcurld start|stop|status|restart"
+        ;;
+esac
