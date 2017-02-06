@@ -56,10 +56,10 @@ class Notifier
         $host = $uri['host'];
         $port = (key_exists('port', $uri) ? $uri['port'] : 80);
         $file = $uri['path'].(isset($uri['query']) ? '?'.$uri['query'] : '');
-        unset($url, $uri);
 
         $fp = fsockopen($host, $port, $errno, $errstr, 10);
         if (!$fp) {
+            Log::error('fsockopen error:'.$errstr.', url:'.$url);
             return false;
         }
 

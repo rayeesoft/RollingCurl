@@ -1,4 +1,5 @@
 <?php
+require(__DIR__.'/../../autoload.php');
 
 $executor = new raysoft\RollingCurl\Executor;
 $s = microtime(1);

@@ -48,7 +48,7 @@ class Executor
             self::$runnings = new HashMap('RUNNING');
         }
 
-        if( !self::$runnings ) {
+        if( !self::$runnings_flag ) {
             self::$runnings_flag = new HashMap('RUNNING_FLAG');
         }
 	}
@@ -222,6 +222,8 @@ class Executor
 	 */
 	private function process_result($request, $info, $result, $handle)
 	{
+		Log::info('process_result:'.$result->url);
+
 		// 如果没有设置回调地址，直接返回
 		if (!$request->callback_url) {
 			return true;

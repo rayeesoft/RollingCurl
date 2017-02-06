@@ -41,7 +41,7 @@ class Manager
 			self::$runnings = new HashMap('RUNNING');
 		}
 
-		if( !self::$runnings ) {
+		if( !self::$runnings_flag ) {
 			self::$runnings_flag = new HashMap('RUNNING_FLAG');
 		}
 	}
