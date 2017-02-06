@@ -222,7 +222,7 @@ class Executor
 	 */
 	private function process_result($request, $info, $result, $handle)
 	{
-		Log::info('process_result:'.$result->url);
+		Log::info('process_result:'.$request->url);
 
 		// 如果没有设置回调地址，直接返回
 		if (!$request->callback_url) {
