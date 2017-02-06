@@ -9,6 +9,9 @@
             "email": "jesonray@163.com"
         }
     ],
-    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {"raysoft\\RollingCurl\\": "src/"}
+    },
+    "minimum-stability": "dev",
     "require": {}
 }
